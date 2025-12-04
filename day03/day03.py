@@ -7,8 +7,6 @@ def main():
     # part2(f"{day}/ex.txt")
     part2(f"{day}/input.txt") # 176582889354075
 
-    # 176582889354038 too low
-
 def part1(filename: str):
     print(f"Part One: {filename}")
 
