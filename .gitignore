@@ -3,6 +3,7 @@
 
 ## specific for advent of code, don't add input files per AoC author's request
 *input.txt
+privateconfig.json
 
 ### Groovy ###
 # .gitignore created from Groovy contributors in https://github.com/apache/groovy/blob/master/.gitignore

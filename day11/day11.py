@@ -1,3 +1,5 @@
+day = "day11"
+
 def main():
     part1(f"{day}/ex.txt")
     part1(f"{day}/input.txt")
