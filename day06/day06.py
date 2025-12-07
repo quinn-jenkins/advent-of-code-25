@@ -15,7 +15,6 @@ def part1(filename: str):
     with open(filename, 'r') as file:
         input = [line.strip().split() for line in file]
         rotated = list(zip(*input[::-1]))
-
         total = 0
         for line in rotated:
             op = line[0]
