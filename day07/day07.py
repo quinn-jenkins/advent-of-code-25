@@ -4,10 +4,10 @@ import time
 day = "day07"
 
 def main():
-    # part1(f"{day}/ex.txt")
-    # part1(f"{day}/input.txt") # 1635
+    part1(f"{day}/ex.txt")
+    part1(f"{day}/input.txt") # 1635
 
-    # part2(f"{day}/ex.txt")
+    part2(f"{day}/ex.txt")
     part2(f"{day}/input.txt") # 58097428661390
 
 def find_start(input):
@@ -18,7 +18,7 @@ def find_start(input):
 
 def part1(filename: str):
     print(f"Part One: {filename}")
-
+    start_time = time.time()
     with open(filename, 'r') as file:
         input = [line.strip() for line in file.readlines()]
         start = find_start(input)
@@ -46,6 +46,7 @@ def part1(filename: str):
                     next_beam_heads.append((beam_head[0]+1, beam_head[1]))
             beam_heads = next_beam_heads
         print(f"Hit {len(splitters_hit)} splitters")
+        print(f"Execution time: {(time.time() - start_time) * 1000} ms")
 
 def part2(filename: str):
     print(f"Part Two: {filename}")
