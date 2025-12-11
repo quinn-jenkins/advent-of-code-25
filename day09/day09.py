@@ -1,5 +1,7 @@
 import time
 import itertools
+from shapely import Polygon, box
+from shapely.prepared import prep
 
 day = "day09"
 
@@ -73,10 +75,10 @@ def part1(filename: str):
 
 def part2(filename: str):
     print(f"Part Two: {filename}")
-    start_time = time.time()
     red_tiles = parse_input(filename)
     edges = connect_tiles(red_tiles)
 
+    start_time = time.time()
     largest_area = 0
     for pair in itertools.combinations(red_tiles, 2):
         area = calc_area(pair[0], pair[1])
@@ -86,6 +88,25 @@ def part2(filename: str):
         if is_rect_inside(edges, pair):
             largest_area = area
 
+    print(f"Largest area is: {largest_area}")
+    print(f"Execution time: {(time.time() - start_time) * 1000} ms")
+
+    largest_area = 0
+    start_time = time.time()
+    poly = prep(Polygon(red_tiles))
+    for pair in itertools.combinations(red_tiles, 2):
+        area = calc_area(pair[0], pair[1])
+        if area <= largest_area:
+            continue
+        
+        c1, c2 = pair
+        r_min_x = min(c1[0], c2[0])
+        r_max_x = max(c1[0], c2[0])
+        r_min_y = min(c1[1], c2[1])
+        r_max_y = max(c1[1], c2[1])
+        rect = box(r_min_x, r_min_y, r_max_x, r_max_y)
+        if poly.contains(rect):
+            largest_area = area
     print(f"Largest area is: {largest_area}")
     print(f"Execution time: {(time.time() - start_time) * 1000} ms")
 
